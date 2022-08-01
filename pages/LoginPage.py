@@ -87,3 +87,37 @@ class LoginPage(BasePage):
         avatar = self.does_element_appear(LoginPageLocators.USER_TEST_AVATAR, confidence=confidence, timeout=timeout)
         assert avatar, "User Avatar didn't appear after registration"
         return avatar
+
+    def should_be_user_name_field(self, confidence=0.8):
+        user_name_field = self.is_element_present(LoginPageLocators.USER_NAME_FIELD, confidence=confidence)
+        assert user_name_field, "No User Name field on Login page"
+        return user_name_field
+
+    def find_user_name_field_click_it_and_type_user_name(self, username, confidence=0.8):
+        user_name = self.should_be_user_name_field(confidence=confidence)
+        pyautogui.moveTo(user_name[0], user_name[1], duration=FAST)
+        pyautogui.click()
+        pyautogui.typewrite(username, interval=0.01)
+
+    def should_be_password_login_field(self, confidence=0.8):
+        password_login_field = self.is_element_present(LoginPageLocators.PASSWORD_LOGIN_FIELD, confidence=confidence)
+        assert password_login_field, "No Password field on Login page"
+        return password_login_field
+
+    def find_password_login_field_click_it_and_type_password(self, password, confidence=0.8):
+        password_login = self.should_be_password_login_field(confidence=confidence)
+        pyautogui.moveTo(password_login[0], password_login[1], duration=FAST)
+        pyautogui.click()
+        pyautogui.typewrite(password, interval=0.01)
+
+    def should_be_login_button(self, confidence=0.8):
+        login_button = self.is_element_present(LoginPageLocators.LOGIN_BUTTON, confidence=confidence)
+        assert login_button, "No Login Button on Login page"
+        return login_button
+
+    def click_login_button(self, confidence=0.8):
+        login_button = self.should_be_login_button(confidence=confidence)
+        pyautogui.moveTo(login_button[0], login_button[1], duration=FAST)
+        pyautogui.click()
+
+

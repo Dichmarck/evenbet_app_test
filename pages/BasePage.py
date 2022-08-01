@@ -10,7 +10,7 @@ class BasePage:
     def __init__(self, screen_size:  Tuple[int]):
         self.size = screen_size
 
-    def does_element_appear(self, locator: str, confidence: float = 0.8, timeout: float = 0, left: int = 0,
+    def does_element_appear(self, locator: str, confidence: float = 0.8, timeout: float = 5, left: int = 0,
                             top: int = 0, width: int = 0, height: int = 0) -> Optional[Tuple[int]]:
         if width == 0:
             width = self.size[0]
