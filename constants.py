@@ -1,0 +1,3 @@
+DEFAULT = 0.3
+FAST = 0.15
+SLOW = 0.5
