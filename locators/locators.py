@@ -1,7 +1,15 @@
 
 
 class BasePageLocators:
-    pass
+    TASKBAR_APP_ICON = r"locators\windows\taskbar_app_icon.png"
+    APP_ICON = r"locators\windows\app_icon.png"
+    CLOSE_APP_RIGHT_TOP_BUTTON = r"locators\base\close_app_right_top_button.png"
+    GREEN_YES_BUTTON = r"locators\base\green_yes_button.png"
+    CLOSE_DIALOG_WHITE_CROSS = r"locators\base\close_dialog_white_cross.png"
+    POKER_LOGO = r"locators\base\poker_logo.png"
+    FULLSCREEN_BUTTON = r"locators\base\make_fullscreen_top_right_button.png"
+    EVENBET_POKER_LEFT_TOP = r"locators\base\evenbet_poker_left_top.png"
+    MAIN_PAGE_LOGIN_BUTTON = r"locators\base\main_page_login_button.png"
 
 
 class LoginPageLocators:

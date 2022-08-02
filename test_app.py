@@ -7,11 +7,13 @@ from evenbet_app_test.pages.LoginPage import LoginPage
 
 #pytest -s -v
 
+pyautogui.PAUSE = 0.5
 
 
 @pytest.mark.skip
-def test_registration_at_start():
+def test_registration(app):
     login_page = LoginPage(pyautogui.size())
+    login_page.click_main_page_login_button()
     login_page.should_appear_login_window()
     login_page.click_sign_up_button()
     login_page.should_appear_sign_up_window()
@@ -25,8 +27,9 @@ def test_registration_at_start():
     pyautogui.moveTo(avatar[0], avatar[1], duration=FAST)
 
 @pytest.mark.skip
-def test_login_at_start():
+def test_login(app):
     login_page = LoginPage(pyautogui.size())
+    login_page.click_main_page_login_button()
     login_page.should_appear_login_window()
     login_page.find_user_name_field_click_it_and_type_user_name("for_tests")
     login_page.find_password_login_field_click_it_and_type_password("for_tests")

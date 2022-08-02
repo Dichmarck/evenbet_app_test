@@ -39,4 +39,11 @@ class BasePage:
                                                        region=(left, top, width, height))
         return center_coords
 
+    def should_be_main_page_login_button(self, confidence=0.8):
+        main_page_login_button = self.is_element_present(BasePageLocators.MAIN_PAGE_LOGIN_BUTTON, confidence=confidence)
+        assert main_page_login_button, "No Login button on Main page"
+        return main_page_login_button
 
+    def click_main_page_login_button(self, confidence=0.8):
+        main_page_login_button = self.should_be_main_page_login_button(confidence=confidence)
+        pyautogui.click(main_page_login_button[0], main_page_login_button[1], duration=FAST)
