@@ -6,24 +6,6 @@ from .pages.BasePage import BasePage
 from evenbet_app_test.constants import *
 from .locators.locators import *
 
-def does_element_appear(locator: str, confidence: float = 0.8, timeout: float = 5, left: int = 0,
-                        top: int = 0, width: int = 0, height: int = 0) -> Optional[Tuple[int]]:
-    if width == 0:
-        width = pyautogui.size()[0]
-    if height == 0:
-        height = pyautogui.size()[1]
-
-    center_coords = None
-    time_start = time.time()
-    time_now = time.time()
-    while time_now - time_start < timeout:
-        center_coords = pyautogui.locateCenterOnScreen(locator, confidence=confidence,
-                                                       region=(left, top, width, height))
-        if center_coords is not None:
-            break
-        time_now = time.time()
-    return center_coords
-
 
 @pytest.fixture
 def app():
@@ -35,7 +17,7 @@ def app():
         pyautogui.click(taskbar_app_icon[0], taskbar_app_icon[1], duration=DEFAULT)
         #print("taskbar_app_icon")
     elif desktop_app_icon:
-        pyautogui.click(desktop_app_icon[0], desktop_app_icon[1], duration=DEFAULT)
+        pyautogui.doubleClick(desktop_app_icon[0], desktop_app_icon[1], duration=DEFAULT)
         #print("desktop_app_icon")
 
     poker_logo = fixture_basepage.does_element_appear(BasePageLocators.POKER_LOGO, timeout=30, confidence=0.9)
